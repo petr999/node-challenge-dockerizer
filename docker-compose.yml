@@ -1,0 +1,28 @@
+version: "3.9"
+
+services:
+  postgres:
+    env_file:
+      - .env-postgres
+    build:
+      context: ./.devcontainer/postgres
+      dockerfile: postgres.dockerfile
+      args:
+        - POSTGRES_PASSWORD
+        - CHALLENGE_DB
+        - CHALLENGE_USER
+        - CHALLENGE_PASS
+    # command: sleep infinity
+    volumes:
+      - ./var/db:/var/lib/postgresql/data
+  node-challenge:
+    env_file:
+      - .env-node-challenge
+    build:
+      context: ./.devcontainer/node-challenge
+      dockerfile: node-challenge.dockerfile
+      args:
+        - USER=user
+        - UID=501
+    volumes:
+      - ../../js/node-challenge:/app/node-challenge
