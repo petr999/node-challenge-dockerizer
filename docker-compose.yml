@@ -13,6 +13,7 @@ services:
         - CHALLENGE_USER
         - CHALLENGE_PASS
     # command: sleep infinity
+    command: sh -c 'chown -Rf postgres:postgres /var/lib/postgresql/data && /usr/lib/postgresql/14/bin/postgres'
     volumes:
       - ./var/db:/var/lib/postgresql/data
   node-challenge:
