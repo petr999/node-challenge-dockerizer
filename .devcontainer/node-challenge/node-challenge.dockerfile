@@ -3,7 +3,7 @@ RUN npm i -g npm
 
 RUN apt update
 RUN apt install --no-install-recommends -y aptitude
-RUN aptitude install --without-recommends -y man less neovim tmux jq wget git recode
+RUN aptitude install --without-recommends -y man less neovim tmux jq wget git recode postgresql-client
 RUN aptitude clean -y
 RUN rm -rf /var/lib/apt/lists/*
 

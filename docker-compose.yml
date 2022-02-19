@@ -7,15 +7,8 @@ services:
     build:
       context: ./.devcontainer/postgres
       dockerfile: postgres.dockerfile
-      args:
-        - POSTGRES_PASSWORD
-        - CHALLENGE_DB
-        - CHALLENGE_USER
-        - CHALLENGE_PASS
-    # command: sleep infinity
-    command: sh -c 'chown -Rf postgres:postgres /var/lib/postgresql/data && /usr/lib/postgresql/14/bin/postgres'
     volumes:
-      - ./var/db:/var/lib/postgresql/data
+      - ./var/db:/bitnami/postgresql
   node-challenge:
     env_file:
       - .env-node-challenge
